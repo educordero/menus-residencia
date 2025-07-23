@@ -1,0 +1,38 @@
+[
+  {
+    "centro": "CSP Vilanova",
+    "provincia": "Barcelona",
+    "menus": [
+      {
+        "tipo": "Basal",
+        "archivo": "menus/vilanova/basal.pdf"
+      },
+      {
+        "tipo": "Diabética",
+        "archivo": "menus/vilanova/diabetica.pdf"
+      },
+      {
+        "tipo": "Fácil Masticación",
+        "archivo": "menus/vilanova/facil-masticacion.pdf"
+      }
+    ]
+  },
+  {
+    "centro": "Residència Verge de Montserrat",
+    "provincia": "Lleida",
+    "menus": [
+      {
+        "tipo": "Basal",
+        "archivo": "menus/montserrat/basal.pdf"
+      },
+      {
+        "tipo": "Halal",
+        "archivo": "menus/montserrat/halal.pdf"
+      },
+      {
+        "tipo": "Sin Gluten",
+        "archivo": "menus/montserrat/sin-gluten.pdf"
+      }
+    ]
+  }
+]

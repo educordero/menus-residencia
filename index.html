@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Menús Residencias</title>
+  <style>
+    body { font-family: sans-serif; padding: 2em; }
+    input, select { padding: 0.5em; margin: 0.5em 0; }
+    ul { padding: 0; list-style: none; }
+    li { margin: 0.5em 0; }
+    .menu-item a { text-decoration: none; color: blue; }
+  </style>
+</head>
+<body>
+  <h1>Consulta de Menús por Residencia</h1>
+  <input type="text" id="buscador" placeholder="Buscar residencia..." />
+  <select id="provincia">
+    <option value="">Todas las provincias</option>
+  </select>
+  <ul id="resultados"></ul>
+
+  <script>
+    let data = [];
+    fetch('centros.json')
+      .then(response => response.json())
+      .then(json => {
+        data = json;
+        cargarProvincias();
+        filtrar();
+      });
+
+    const buscador = document.getElementById('buscador');
+    const provincia = document.getElementById('provincia');
+    const resultados = document.getElementById('resultados');
+
+    buscador.addEventListener('input', filtrar);
+    provincia.addEventListener('change', filtrar);
+
+    function cargarProvincias() {
+      const provincias = [...new Set(data.map(d => d.provincia))];
+      provincias.forEach(p => {
+        const opt = document.createElement('option');
+        opt.value = p;
+        opt.textContent = p;
+        provincia.appendChild(opt);
+      });
+    }
+
+    function filtrar() {
+      const texto = buscador.value.toLowerCase();
+      const filtroProvincia = provincia.value;
+      resultados.innerHTML = '';
+      data
+        .filter(d => d.centro.toLowerCase().includes(texto))
+        .filter(d => !filtroProvincia || d.provincia === filtroProvincia)
+        .forEach(d => {
+          const li = document.createElement('li');
+          const nombre = document.createElement('strong');
+          nombre.textContent = d.centro + ' (' + d.provincia + ')';
+          li.appendChild(nombre);
+          const listaMenus = document.createElement('ul');
+          d.menus.forEach(m => {
+            const item = document.createElement('li');
+            item.className = 'menu-item';
+            item.innerHTML = `<a href="${m.archivo}" target="_blank">${m.tipo}</a>`;
+            listaMenus.appendChild(item);
+          });
+          li.appendChild(listaMenus);
+          resultados.appendChild(li);
+        });
+    }
+  </script>
+</body>
+</html>
