@@ -1,38 +1,20 @@
 [
   {
-    "centro": "CSP Vilanova",
+    "nombre": "CSP Vilanova",
     "provincia": "Barcelona",
     "menus": [
-      {
-        "tipo": "Basal",
-        "archivo": "menus/vilanova/basal.pdf"
-      },
-      {
-        "tipo": "Diabética",
-        "archivo": "menus/vilanova/diabetica.pdf"
-      },
-      {
-        "tipo": "Fácil Masticación",
-        "archivo": "menus/vilanova/facil-masticacion.pdf"
-      }
+      { "nombre": "Basal", "url": "menus/vilanova/basal.pdf" },
+      { "nombre": "Diabética", "url": "menus/vilanova/diabetica.pdf" },
+      { "nombre": "Fácil Masticación", "url": "menus/vilanova/facil-masticacion.pdf" }
     ]
   },
   {
-    "centro": "Residència Verge de Montserrat",
+    "nombre": "Residència Verge de Montserrat",
     "provincia": "Lleida",
     "menus": [
-      {
-        "tipo": "Basal",
-        "archivo": "menus/montserrat/basal.pdf"
-      },
-      {
-        "tipo": "Halal",
-        "archivo": "menus/montserrat/halal.pdf"
-      },
-      {
-        "tipo": "Sin Gluten",
-        "archivo": "menus/montserrat/sin-gluten.pdf"
-      }
+      { "nombre": "Basal", "url": "menus/montserrat/basal.pdf" },
+      { "nombre": "Halal", "url": "menus/montserrat/halal.pdf" },
+      { "nombre": "Sin Gluten", "url": "menus/montserrat/sin-gluten.pdf" }
     ]
   }
 ]
