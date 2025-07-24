@@ -58,7 +58,7 @@
         .forEach(d => {
           const li = document.createElement('li');
           const nombre = document.createElement('strong');
-          nombre.textContent = d.centro + ' (' + d.provincia + ')';
+          nombre.textContent = d.nombre + ' (' + d.provincia + ')';
           li.appendChild(nombre);
           const listaMenus = document.createElement('ul');
           d.menus.forEach(m => {
