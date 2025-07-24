@@ -9,6 +9,15 @@
     ]
   },
   {
+    "nombre": "Residencia Mataró",
+    "provincia": "Barcelona",
+    "menus": [
+      { "nombre": "Basal", "url": "menus/barcelona/residencia_mataro/basal.pdf" },
+      { "nombre": "Diabética", "url": "menus/barcelona/residencia_mataro/diabetica.pdf" },
+      { "nombre": "Fácil Masticación", "url": "menus/barcelona/residencia_mataro/facil_masticacion.pdf" }
+    ]
+  },
+  {
     "nombre": "Residència Verge de Montserrat",
     "provincia": "Lleida",
     "menus": [
