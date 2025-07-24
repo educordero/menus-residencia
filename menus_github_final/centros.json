@@ -1,0 +1,56 @@
+[
+  {
+    "nombre": "csp vilanova",
+    "provincia": "barcelona",
+    "menus": [
+      {
+        "nombre": "Basal",
+        "url": "menus/barcelona/csp_vilanova/basal.pdf"
+      },
+      {
+        "nombre": "Diabetica",
+        "url": "menus/barcelona/csp_vilanova/diabetica.pdf"
+      },
+      {
+        "nombre": "Facil Masticacion",
+        "url": "menus/barcelona/csp_vilanova/facil_masticacion.pdf"
+      }
+    ]
+  },
+  {
+    "nombre": "residencia mataro",
+    "provincia": "barcelona",
+    "menus": [
+      {
+        "nombre": "Basal",
+        "url": "menus/barcelona/residencia_mataro/basal.pdf"
+      },
+      {
+        "nombre": "Diabetica",
+        "url": "menus/barcelona/residencia_mataro/diabetica.pdf"
+      },
+      {
+        "nombre": "Facil Masticacion",
+        "url": "menus/barcelona/residencia_mataro/facil_masticacion.pdf"
+      }
+    ]
+  },
+  {
+    "nombre": "residencia verge de montserrat",
+    "provincia": "lleida",
+    "menus": [
+      {
+        "nombre": "Basal",
+        "url": "menus/lleida/residencia_verge_de_montserrat/basal.pdf"
+      },
+      {
+        "nombre": "Halal",
+        "url": "menus/lleida/residencia_verge_de_montserrat/halal.pdf"
+      },
+      {
+        "nombre": "Sin Gluten",
+        "url": "menus/lleida/residencia_verge_de_montserrat/sin_gluten.pdf"
+      }
+    ]
+  }
+]
