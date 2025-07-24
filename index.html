@@ -19,6 +19,7 @@
     <option value="">Todas las provincias</option>
   </select>
   <ul id="resultados"></ul>
+  <div id="menusCentro" style="margin-top: 2em;"></div>
 <img src="Logo.png" alt="Logo Aramark" style="position: absolute; top: 20px; right: 20px; height: 40px;">
 
   <script>
@@ -48,18 +49,15 @@
       });
     }
 
-   function filtrar() {
-  const texto = buscador.value.toLowerCase();
-  const filtroProvincia = provincia.value;
-  resultados.innerHTML = '';
+  .forEach(d => {
+    const li = document.createElement('li');
+    const boton = document.createElement('button');
+    boton.textContent = `${d.nombre} (${d.provincia})`;
+    boton.onclick = () => mostrarMenus(d);
+    li.appendChild(boton);
+    resultados.appendChild(li);
+});
 
-  let resultadosFiltrados = data;
-
-  if (texto) {
-    resultadosFiltrados = resultadosFiltrados.filter(d =>
-      d.nombre.toLowerCase().includes(texto)
-    );
-  }
 
   if (filtroProvincia) {
     resultadosFiltrados = resultadosFiltrados.filter(d =>
@@ -74,4 +72,18 @@
     li.appendChild(nombre);
     resultados.appendChild(li);
   });
+}
+function mostrarMenus(centro) {
+    const contenedor = document.getElementById('menusCentro');
+    contenedor.innerHTML = `<h2>Menús disponibles para ${centro.nombre}</h2>`;
+    const ul = document.createElement('ul');
+    centro.menus.forEach(m => {
+        const li = document.createElement('li');
+        li.className = 'menu-item';
+        li.innerHTML = `<a href="${m.url}" target="_blank">${m.nombre}</a>`;
+        ul.appendChild(li);
+    });
+    contenedor.appendChild(ul);
+    // Actualiza URL sin recargar
+    history.pushState({ centro }, '', `#${centro.nombre.replace(/\s+/g, '-')}`);
 }
