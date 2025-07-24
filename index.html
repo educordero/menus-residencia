@@ -49,14 +49,14 @@
     }
 
     function filtrar() {
-      const texto = buscador.value.toLowerCase();
-      const filtroProvincia = provincia.value;
+      const texto = buscador.value.toLowerCase().trim();
+      const filtroProvincia = provincia.value.toLowerCase().trim();
       resultados.innerHTML = '';
       document.getElementById('menusCentro').innerHTML = '';
 
       let resultadosFiltrados = data
         .filter(d => d.nombre.toLowerCase().includes(texto))
-        .filter(d => !filtroProvincia || d.provincia === filtroProvincia);
+        .filter(d => !filtroProvincia || d.provincia.toLowerCase().trim() === filtroProvincia);
 
       resultadosFiltrados.forEach(d => {
         const li = document.createElement('li');
@@ -84,3 +84,4 @@
   </script>
 </body>
 </html>
+
