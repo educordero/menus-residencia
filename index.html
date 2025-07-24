@@ -53,7 +53,7 @@
       const filtroProvincia = provincia.value;
       resultados.innerHTML = '';
       data
-        .filter(d => d.centro.toLowerCase().includes(texto))
+        .filter(d => d.nombre.toLowerCase().includes(texto))
         .filter(d => !filtroProvincia || d.provincia === filtroProvincia)
         .forEach(d => {
           const li = document.createElement('li');
