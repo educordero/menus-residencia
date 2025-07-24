@@ -3,18 +3,18 @@
     "nombre": "CSP Vilanova",
     "provincia": "Barcelona",
     "menus": [
-      { "nombre": "Basal", "url": "menus/vilanova/basal.pdf" },
-      { "nombre": "Diabética", "url": "menus/vilanova/diabetica.pdf" },
-      { "nombre": "Fácil Masticación", "url": "menus/vilanova/facil-masticacion.pdf" }
+      { "nombre": "Basal", "url": "menus/Barcelona/CSP Vilanova/basal.pdf" },
+      { "nombre": "Diabética", "url": "menus/Barcelona/CSP Vilanova/diabetica.pdf" },
+      { "nombre": "Fácil Masticación", "url": "menus/Barcelona/CSP Vilanova/facil-masticacion.pdf" }
     ]
   },
   {
     "nombre": "Residència Verge de Montserrat",
     "provincia": "Lleida",
     "menus": [
-      { "nombre": "Basal", "url": "menus/montserrat/basal.pdf" },
-      { "nombre": "Halal", "url": "menus/montserrat/halal.pdf" },
-      { "nombre": "Sin Gluten", "url": "menus/montserrat/sin-gluten.pdf" }
+      { "nombre": "Basal", "url": "menus/Lleida/Residència Verge de Montserrat/basal.pdf" },
+      { "nombre": "Halal", "url": "menus/Lleida/Residència Verge de Montserrat/halal.pdf" },
+      { "nombre": "Sin Gluten", "url": "menus/Lleida/Residència Verge de Montserrat/sin-gluten.pdf" }
     ]
   }
 ]
