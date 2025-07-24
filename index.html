@@ -1,5 +1,5 @@
 
-   <!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -14,21 +14,28 @@
 </head>
 <body>
   <h1>Consulta de Menús por Residencia</h1>
+
   <input type="text" id="buscador" placeholder="Buscar residencia..." />
-   <button id="btnNuevoCentro">+ Añadir nuevo centro</button>
-<div id="formularioCentro" style="display:none; margin-top:1em;">
-  <input type="text" id="nuevoNombre" placeholder="Nombre del centro" />
-  <select id="nuevaProvincia">
-    <option value="">Selecciona provincia</option>
-  </select>
-  <button id="guardarCentro">Guardar centro</button>
-</div>
+  <button id="btnNuevoCentro">➕ Añadir nuevo centro</button>
+
+  <div id="formularioCentro" style="display:none; margin-top:1em;">
+    <input type="text" id="nuevocentro" placeholder="Nombre del centro" />
+    <select id="nuevaProvincia">
+      <option value="">Selecciona provincia</option>
+      <option value="Barcelona">Barcelona</option>
+      <option value="Lleida">Lleida</option>
+      <!-- puedes añadir más provincias -->
+    </select>
+    <button id="guardarCentro">Guardar centro</button>
+  </div>
 
   <select id="provincia">
     <option value="">Todas las provincias</option>
   </select>
+
   <ul id="resultados"></ul>
   <div id="menusCentro" style="margin-top: 2em;"></div>
+
   <img src="Logo.png" alt="Logo Aramark" style="position: absolute; top: 20px; right: 20px; height: 40px;">
 
   <script>
@@ -39,26 +46,6 @@
         data = json;
         cargarProvincias();
         filtrar();
-         document.getElementById('btnNuevoCentro').addEventListener('click', () => {
-  const form = document.getElementById('formularioCentro');
-  form.style.display = form.style.display === 'none' ? 'block' : 'none';
-  cargarProvinciasFormulario();
-});
-
-function cargarProvinciasFormulario() {
-  const select = document.getElementById('nuevaProvincia');
-  if (select.children.length > 1) return; // Ya está cargado
-
-  const provinciasUnicas = [...new Set(data.map(d => d.provincia))];
-  provinciasUnicas.forEach(p => {
-    const opt = document.createElement('option');
-    opt.value = p;
-    opt.textContent = p;
-    select.appendChild(opt);
-  });
-}
-
-        restaurarDesdeHash();
       });
 
     const buscador = document.getElementById('buscador');
@@ -67,6 +54,39 @@ function cargarProvinciasFormulario() {
 
     buscador.addEventListener('input', filtrar);
     provincia.addEventListener('change', filtrar);
+
+    document.getElementById('btnNuevoCentro').addEventListener('click', () => {
+      document.getElementById('formularioCentro').style.display = 'block';
+    });
+
+    document.getElementById('guardarCentro').addEventListener('click', () => {
+      const nombreCentro = document.getElementById('nuevocentro').value.trim();
+      const provinciaCentro = document.getElementById('nuevaProvincia').value;
+
+      if (!nombreCentro || !provinciaCentro) {
+        alert('Debes rellenar ambos campos.');
+        return;
+      }
+
+      const yaExiste = data.some(d => d.nombre.toLowerCase() === nombreCentro.toLowerCase());
+      if (yaExiste) {
+        alert('Este centro ya existe.');
+        return;
+      }
+
+      const nuevoCentro = {
+        nombre: nombreCentro,
+        provincia: provinciaCentro,
+        menus: []
+      };
+
+      data.push(nuevoCentro);
+      filtrar();
+
+      document.getElementById('formularioCentro').style.display = 'none';
+      document.getElementById('nuevocentro').value = '';
+      document.getElementById('nuevaProvincia').value = '';
+    });
 
     function cargarProvincias() {
       const provincias = [...new Set(data.map(d => d.provincia))];
@@ -109,22 +129,8 @@ function cargarProvinciasFormulario() {
         ul.appendChild(li);
       });
       contenedor.appendChild(ul);
-      history.pushState({ centro }, '', `#${encodeURIComponent(centro.nombre)}`);
+      history.pushState({ centro }, '', `#${centro.nombre.replace(/\s+/g, '-')}`);
     }
-
-    function restaurarDesdeHash() {
-      const hash = decodeURIComponent(location.hash.substring(1));
-      if (!hash) return;
-      const centro = data.find(d => d.nombre === hash);
-      if (centro) {
-        mostrarMenus(centro);
-        buscador.value = '';
-        provincia.value = centro.provincia;
-        filtrar();
-      }
-    }
-
-    window.addEventListener('popstate', restaurarDesdeHash);
   </script>
 </body>
 </html>
