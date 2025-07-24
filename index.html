@@ -15,6 +15,15 @@
 <body>
   <h1>Consulta de Menús por Residencia</h1>
   <input type="text" id="buscador" placeholder="Buscar residencia..." />
+   <button id="btnNuevoCentro">+ Añadir nuevo centro</button>
+<div id="formularioCentro" style="display:none; margin-top:1em;">
+  <input type="text" id="nuevoNombre" placeholder="Nombre del centro" />
+  <select id="nuevaProvincia">
+    <option value="">Selecciona provincia</option>
+  </select>
+  <button id="guardarCentro">Guardar centro</button>
+</div>
+
   <select id="provincia">
     <option value="">Todas las provincias</option>
   </select>
@@ -30,6 +39,25 @@
         data = json;
         cargarProvincias();
         filtrar();
+         document.getElementById('btnNuevoCentro').addEventListener('click', () => {
+  const form = document.getElementById('formularioCentro');
+  form.style.display = form.style.display === 'none' ? 'block' : 'none';
+  cargarProvinciasFormulario();
+});
+
+function cargarProvinciasFormulario() {
+  const select = document.getElementById('nuevaProvincia');
+  if (select.children.length > 1) return; // Ya está cargado
+
+  const provinciasUnicas = [...new Set(data.map(d => d.provincia))];
+  provinciasUnicas.forEach(p => {
+    const opt = document.createElement('option');
+    opt.value = p;
+    opt.textContent = p;
+    select.appendChild(opt);
+  });
+}
+
         restaurarDesdeHash();
       });
 
