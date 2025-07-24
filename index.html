@@ -48,29 +48,30 @@
       });
     }
 
-    function filtrar() {
-      const texto = buscador.value.toLowerCase();
-      const filtroProvincia = provincia.value;
-      resultados.innerHTML = '';
-      data
-        .filter(d => d.nombre.toLowerCase().includes(texto))
-        .filter(d => !filtroProvincia || d.provincia === filtroProvincia)
-        .forEach(d => {
-          const li = document.createElement('li');
-          const nombre = document.createElement('strong');
-          nombre.textContent = d.nombre + ' (' + d.provincia + ')';
-          li.appendChild(nombre);
-          const listaMenus = document.createElement('ul');
-          d.menus.forEach(m => {
-            const item = document.createElement('li');
-            item.className = 'menu-item';
-            item.innerHTML = `<a href="${m.archivo}" target="_blank">${m.tipo}</a>`;
-            listaMenus.appendChild(item);
-          });
-          li.appendChild(listaMenus);
-          resultados.appendChild(li);
-        });
-    }
-  </script>
-</body>
-</html>
+   function filtrar() {
+  const texto = buscador.value.toLowerCase();
+  const filtroProvincia = provincia.value;
+  resultados.innerHTML = '';
+
+  let resultadosFiltrados = data;
+
+  if (texto) {
+    resultadosFiltrados = resultadosFiltrados.filter(d =>
+      d.nombre.toLowerCase().includes(texto)
+    );
+  }
+
+  if (filtroProvincia) {
+    resultadosFiltrados = resultadosFiltrados.filter(d =>
+      d.provincia === filtroProvincia
+    );
+  }
+
+  resultadosFiltrados.forEach(d => {
+    const li = document.createElement('li');
+    const nombre = document.createElement('strong');
+    nombre.textContent = d.nombre + ' (' + d.provincia + ')';
+    li.appendChild(nombre);
+    resultados.appendChild(li);
+  });
+}
