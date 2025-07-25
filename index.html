@@ -44,10 +44,25 @@
   <ul id="resultados"></ul>
   <div id="menusCentro" style="margin-top: 2em;"></div>
 
+  <!-- Formulario de código PIN -->
+  <div id="formCodigo" style="display:none; margin-top:1em;">
+    <input type="password" id="codigoCentro" maxlength="4" placeholder="Introduce código (4 cifras)" />
+    <button id="validarCodigo">Validar</button>
+    <span id="errorCodigo" style="color: red; display: none;">Código incorrecto</span>
+  </div>
+
   <img src="Logo.png" alt="Logo Aramark" style="position: absolute; top: 30px; right: 30px; height: 120px;">
 
   <script>
-    // Valida que no haya menús duplicados por centro (case-insensitive)
+    // Códigos PIN por centro (nombre exacto)
+    const codigosCentros = {
+      "CSP Vilanova": "1234",
+      "Residencia Mataró": "5678",
+      "Residència Verge de Montserrat": "2468",
+      "Madre Jesus Pinto": "1357"
+      // Añade más centros aquí según lo que tengas en tu JSON
+    };
+
     function validarMenusUnicosPorCentro(data) {
       let errores = [];
       data.forEach(centro => {
@@ -64,6 +79,8 @@
     }
 
     let data = [];
+    let ultimoCentroSeleccionado = null;
+
     fetch('centros.json')
       .then(response => response.json())
       .then(json => {
@@ -105,7 +122,6 @@
     });
 
     function cargarProvincias() {
-      // Actualiza el select eliminando opciones antiguas (excepto la primera)
       while (provincia.options.length > 1) provincia.remove(1);
       const provincias = [...new Set(data.map(d => d.provincia))];
       provincias.forEach(p => {
@@ -121,6 +137,7 @@
       const filtroProvincia = provincia.value;
       resultados.innerHTML = '';
       document.getElementById('menusCentro').innerHTML = '';
+      document.getElementById('formCodigo').style.display = 'none';
       let resultadosFiltrados = data
         .filter(d => d.nombre.toLowerCase().includes(texto))
         .filter(d => !filtroProvincia || d.provincia === filtroProvincia);
@@ -128,11 +145,32 @@
         const li = document.createElement('li');
         const boton = document.createElement('button');
         boton.textContent = `${d.nombre} (${d.provincia})`;
-        boton.onclick = () => mostrarMenus(d);
+        boton.onclick = () => pedirCodigo(d);
         li.appendChild(boton);
         resultados.appendChild(li);
       });
     }
+
+    // Flujo de PIN por centro
+    function pedirCodigo(centro) {
+      ultimoCentroSeleccionado = centro;
+      document.getElementById('menusCentro').innerHTML = '';
+      document.getElementById('formCodigo').style.display = 'block';
+      document.getElementById('codigoCentro').value = '';
+      document.getElementById('errorCodigo').style.display = 'none';
+    }
+
+    document.getElementById('validarCodigo').onclick = function() {
+      if (!ultimoCentroSeleccionado) return;
+      const pinIngresado = document.getElementById('codigoCentro').value.trim();
+      const pinCorrecto = codigosCentros[ultimoCentroSeleccionado.nombre] || "";
+      if (pinIngresado === pinCorrecto) {
+        document.getElementById('formCodigo').style.display = 'none';
+        mostrarMenus(ultimoCentroSeleccionado);
+      } else {
+        document.getElementById('errorCodigo').style.display = 'inline';
+      }
+    };
 
     function mostrarMenus(centro) {
       const contenedor = document.getElementById('menusCentro');
@@ -150,3 +188,4 @@
   </script>
 </body>
 </html>
+
