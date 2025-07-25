@@ -39,14 +39,42 @@
   <img src="Logo.png" alt="Logo Aramark" style="position: absolute; top: 20px; right: 20px; height: 40px;">
 
   <script>
-    let data = [];
-    fetch('centros.json')
-      .then(response => response.json())
-      .then(json => {
-        data = json;
-        cargarProvincias();
-        filtrar();
-      });
+function validarMenusUnicosPorCentro(data) {
+  let errores = [];
+  data.forEach(centro => {
+    let nombres = centro.menus.map(m => m.nombre.toLowerCase());
+    let duplicados = nombres.filter((item, idx) => nombres.indexOf(item) !== idx);
+    if (duplicados.length > 0) {
+      errores.push(`Duplicados en centro "${centro.nombre}": ${[...new Set(duplicados)].join(', ')}`);
+    }
+  });
+  if (errores.length > 0) {
+    alert('Errores en el JSON:\n' + errores.join('\n'));
+    throw new Error('Duplicados detectados');
+  }
+}
+
+let data = [];
+fetch('centros.json')
+  .then(response => response.json())
+  .then(json => {
+    validarMenusUnicosPorCentro(json); // validación aquí
+    data = json;
+    cargarProvincias();
+    filtrar();
+  });
+
+// ...resto del código...
+
+let data = [];
+fetch('centros.json')
+  .then(response => response.json())
+  .then(json => {
+    validarMenusUnicosPorCentro(json); // validación aquí
+    data = json;
+    cargarProvincias();
+    filtrar();
+  });
 
     const buscador = document.getElementById('buscador');
     const provincia = document.getElementById('provincia');
