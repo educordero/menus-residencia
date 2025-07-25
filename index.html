@@ -15,8 +15,13 @@
 <body>
   <h1>Consulta de Menús por Residencia</h1>
 
-  <input type="text" id="buscador" placeholder="Buscar residencia..." />
-  <button id="btnNuevoCentro">➕ Añadir nuevo centro</button>
+  <div style="display: flex; gap: 16px; align-items: center;">
+    <input type="text" id="buscador" placeholder="Buscar residencia..." />
+    <select id="provincia">
+      <option value="">Todas las provincias</option>
+    </select>
+    <button id="btnNuevoCentro" style="margin-left: 48px;">➕ Añadir nuevo centro</button>
+  </div>
 
   <div id="formularioCentro" style="display:none; margin-top:1em;">
     <input type="text" id="nuevocentro" placeholder="Nombre del centro" />
@@ -28,10 +33,6 @@
     </select>
     <button id="guardarCentro">Guardar centro</button>
   </div>
-
-  <select id="provincia">
-    <option value="">Todas las provincias</option>
-  </select>
 
   <ul id="resultados"></ul>
   <div id="menusCentro" style="margin-top: 2em;"></div>
