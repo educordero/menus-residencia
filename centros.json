@@ -25,5 +25,14 @@
       { "nombre": "Halal", "url": "menus/lleida/residencia_verge_de_montserrat/halal.pdf" },
       { "nombre": "Sin Gluten", "url": "menus/lleida/residencia_verge_de_montserrat/sin_gluten.pdf" }
     ]
+  },
+  {
+    "nombre": "Madre Jesus Pinto",
+    "provincia": "Madrid",
+    "menus": [
+      { "nombre": "Basal", "url": "menus/madrid/madre_jesus_pinto/basal.pdf" },
+      { "nombre": "Halal", "url": "menus/madrid/madre_jesus_pinto/halal.pdf" }
+    ]
   }
 ]
+Aprueba y continúa.
