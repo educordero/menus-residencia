@@ -57,7 +57,7 @@
       "CSP Vilanova": "1234",
       "Residencia Mataró": "1234",
       "Residència Verge de Montserrat": "1235",
-      "Madre Jesus Pinto": "1235"
+      "Madre Jesus Pinto": "1235",
       "Valldemia": "1234"
     };
 
@@ -142,8 +142,12 @@
       if (!texto && !filtroProvincia) return;
 
       let resultadosFiltrados = data
-        .filter(d => d.nombre.toLowerCase().includes(texto))
+        .filter(d =>
+          d.nombre.toLowerCase().includes(texto) ||
+          d.provincia.toLowerCase().includes(texto)
+        )
         .filter(d => !filtroProvincia || d.provincia === filtroProvincia);
+
       resultadosFiltrados.forEach(d => {
         const li = document.createElement('li');
         const boton = document.createElement('button');
