@@ -36,5 +36,19 @@
       { "nombre": "Basal", "url": "menus/madrid/madre_jesus_pinto/basal.pdf" },
       { "nombre": "Halal", "url": "menus/madrid/madre_jesus_pinto/halal.pdf" }
     ]
-  }
+   }
 ]
+{
+  "nombre": "Valldemia",
+  "provincia": "Lleida",
+  "menus": [
+    { "nombre": "Basal", "url": "menus/lleida/valldemia/basal.pdf" },
+    { "nombre": "Ovolactovegetariano", "url": "menus/lleida/valldemia/ovolactovegetariano.pdf" },
+    { "nombre": "Sin Gluten", "url": "menus/lleida/valldemia/sin_gluten.pdf" },
+    { "nombre": "Sin Huevo", "url": "menus/lleida/valldemia/sin_huevo.pdf" },
+    { "nombre": "Sin Lactosa", "url": "menus/lleida/valldemia/sin_lactosa.pdf" },
+    { "nombre": "Sin Pescado", "url": "menus/lleida/valldemia/sin_pescado.pdf" }
+  ]
+}
+
+
