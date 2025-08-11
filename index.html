@@ -15,42 +15,4 @@
     input, select { padding: 0.5em; }
     ul { padding: 0; list-style: none; }
     li { margin: 0.5em 0; }
-    .menu-item a { text-decoration: none; color: blue; }
-    .calendario { margin-top: 1em; }
-    .semana { display: inline-block; padding: 0.5em; border: 1px solid #ccc; margin: 0.2em; cursor: pointer; }
-    .semana.activa { background: #d4f0ff; font-weight: bold; }
-    .selector { margin-top: 1em; }
-  </style>
-</head>
-<body>
-  <h1>Consulta de Menús por Residencia</h1>
-
-  <div class="filtros">
-    <input type="text" id="buscador" placeholder="Buscar residencia..." autocomplete="off" />
-    <select id="provincia">
-      <option value="">Todas las provincias</option>
-    </select>
-    <button id="btnNuevoCentro">➕ Añadir nuevo centro</button>
-  </div>
-
-  <div id="formularioCentro" style="display:none; margin-top:1em;">
-    <input type="text" id="nuevocentro" placeholder="Nombre del centro" autocomplete="off" />
-    <select id="nuevaProvincia">
-      <option value="">Selecciona provincia</option>
-      <option value="Barcelona">Barcelona</option>
-      <option value="Lleida">Lleida</option>
-      <option value="Madrid">Madrid</option>
-    </select>
-    <button id="guardarCentro">Guardar centro</button>
-  </div>
-
-  <ul id="resultados"></ul>
-  <div id="menusCentro" style="margin-top: 2em;"></div>
-
-  <div id="formCodigo" style="display:none; margin-top:1em;">
-    <input type="password" id="codigoCentro" maxlength="4" placeholder="Introduce código (4 cifras)" autocomplete="off" />
-    <button id="validarCodigo">Validar</button>
-    <span id="errorCodigo" style="color: red; display: none;">Código incorrecto</span>
-  </div>
-
-  <img src="Logo.png" alt="Logo Aramark
+    .menu-item a { text-decoration: none; color: blue
