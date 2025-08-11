@@ -2,48 +2,56 @@
   {
     "nombre": "CSP Vilanova",
     "provincia": "Barcelona",
-    "ciclo": { "semanas": 5, "inicio": "2025-09-01" },
-    "ids_dietas": [
-      { "id": "ID001", "dietas": ["basal", "diabetica", "facil_masticacion"] },
-      { "id": "ID002", "dietas": ["basal", "facil_masticacion"] }
-    ],
-    "repo": "menus/barcelona/csp_vilanova/"
+    "codigo": "1234",
+    "menus": [
+      { "nombre": "Basal", "url": "menus/barcelona/csp_vilanova/basal.pdf" },
+      { "nombre": "Diabética", "url": "menus/barcelona/csp_vilanova/diabetica.pdf" },
+      { "nombre": "Fácil Masticación", "url": "menus/barcelona/csp_vilanova/facil_masticacion.pdf" }
+    ]
   },
   {
     "nombre": "Residencia Mataró",
     "provincia": "Barcelona",
-    "ciclo": { "semanas": 4, "inicio": "2025-09-01" },
-    "ids_dietas": [
-      { "id": "ID010", "dietas": ["basal", "diabetica"] }
-    ],
-    "repo": "menus/barcelona/residencia_mataro/"
+    "codigo": "1234",
+    "menus": [
+      { "nombre": "Basal", "url": "menus/barcelona/residencia_mataro/basal.pdf" },
+      { "nombre": "Fácil Masticación", "url": "menus/barcelona/residencia_mataro/facil_masticacion.pdf" }
+    ]
   },
   {
     "nombre": "Residència Verge de Montserrat",
     "provincia": "Lleida",
-    "ciclo": { "semanas": 5, "inicio": "2025-09-01" },
-    "ids_dietas": [
-      { "id": "ID020", "dietas": ["basal", "halal", "diabetica"] }
-    ],
-    "repo": "menus/lleida/residencia_verge_de_montserrat/"
+    "codigo": "1234",
+    "menus": [
+      { "nombre": "Basal", "url": "menus/lleida/residencia_verge_de_montserrat/basal.pdf" },
+      { "nombre": "Halal", "url": "menus/lleida/residencia_verge_de_montserrat/halal.pdf" },
+      { "nombre": "Sin Gluten", "url": "menus/lleida/residencia_verge_de_montserrat/sin_gluten.pdf" }
+    ]
   },
   {
     "nombre": "Madre Jesus Pinto",
     "provincia": "Madrid",
-    "ciclo": { "semanas": 5, "inicio": "2025-09-01" },
-    "ids_dietas": [
-      { "id": "ID030", "dietas": ["basal", "diabetica"] },
-      { "id": "ID031", "dietas": ["facil_masticacion"] }
-    ],
-    "repo": "menus/madrid/madre_jesus_pinto/"
+    "codigo": "1234",
+    "menus": [
+      { "nombre": "Basal", "url": "menus/madrid/madre_jesus_pinto/basal.pdf" },
+      { "nombre": "Halal", "url": "menus/madrid/madre_jesus_pinto/halal.pdf" }
+    ]
   },
   {
     "nombre": "Valldemia",
-    "provincia": "Barcelona",
-    "ciclo": { "semanas": 4, "inicio": "2025-09-01" },
-    "ids_dietas": [
-      { "id": "ID040", "dietas": ["basal"] }
-    ],
-    "repo": "menus/barcelona/valldemia/"
+    "provincia": "Lleida",
+    "codigo": "1234",
+    "menus": [
+      { "nombre": "Basal", "url": "menus/lleida/valldemia/basal.pdf" },
+      { "nombre": "Ovolactovegetariano", "url": "menus/lleida/valldemia/ovolactovegetariano.pdf" },
+      { "nombre": "Sin Gluten", "url": "menus/lleida/valldemia/sin_gluten.pdf" },
+      { "nombre": "Sin Huevo", "url": "menus/lleida/valldemia/sin_huevo.pdf" },
+      { "nombre": "Sin Lactosa", "url": "menus/lleida/valldemia/sin_lactosa.pdf" },
+      { "nombre": "Sin Pescado", "url": "menus/lleida/valldemia/sin_pescado.pdf" }
+    ]
   }
 ]
+
+
+
+
