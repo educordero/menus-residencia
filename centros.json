@@ -5,11 +5,11 @@
     "codigo": "1234",
     "ciclo": { "semanas": 5, "inicio": "2025-09-01" },
     "menus": [
-      { "id": "ID001", "nombre": "Basal 1" },
-      { "id": "ID001", "nombre": "Diabética" },
-      { "id": "ID001", "nombre": "Fácil Masticación 1" },
-      { "id": "ID002", "nombre": "Basal 2" },
-      { "id": "ID002", "nombre": "Fácil Masticación 2" }
+      { "id": "ID001", "nombre": "Basal ID001" },
+      { "id": "ID001", "nombre": "Diabética ID001" },
+      { "id": "ID001", "nombre": "Fácil Masticación ID001" },
+      { "id": "ID002", "nombre": "Basal ID002" },
+      { "id": "ID002", "nombre": "Fácil Masticación ID002" }
     ]
   },
   {
@@ -18,11 +18,11 @@
     "codigo": "5678",
     "ciclo": { "semanas": 5, "inicio": "2025-09-01" },
     "menus": [
-      { "id": "ID003", "nombre": "Basal" },
-      { "id": "ID003", "nombre": "Diabética" },
-      { "id": "ID003", "nombre": "Fácil Masticación" }
+      { "id": "ID003", "nombre": "Basal ID003" },
+      { "id": "ID003", "nombre": "Diabética ID003" },
+      { "id": "ID003", "nombre": "Fácil Masticación ID003" }
     ]
   }
 ]
-  
+
 
