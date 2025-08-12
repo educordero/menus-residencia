@@ -171,7 +171,7 @@
     function mostrarMenusSemana(centro, semana) {
       const ul = document.createElement('ul');
       ul.innerHTML = centro.menus.map(m => {
-        const urlSem = m.url.replace('.pdf', `_sem${semana}.pdf`);
+        const urlSem = `${m.url}_sem${semana}.pdf`;
         return `<li class="menu-item"><a href="${urlSem}" target="_blank">${m.nombre} - Semana ${semana}</a></li>`;
       }).join('');
       document.getElementById('menusCentro').appendChild(ul);
