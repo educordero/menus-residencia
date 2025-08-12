@@ -3,24 +3,63 @@
     "nombre": "CSP Vilanova",
     "provincia": "Barcelona",
     "codigo": "1234",
-    "ciclo": { "semanas": 5, "inicio": "2025-09-01" },
+    "ciclo": {
+      "semanas": 5,
+      "inicio": "2025-09-01"
+    },
     "menus": [
-      { "id": "ID001", "nombre": "Basal", "url": "menus/barcelona/csp_vilanova/ID001_basal" },
-      { "id": "ID001", "nombre": "Diabética", "url": "menus/barcelona/csp_vilanova/ID001_diabetica" },
-      { "id": "ID001", "nombre": "Fácil Masticación", "url": "menus/barcelona/csp_vilanova/ID001_facil_masticacion" },
-      { "id": "ID002", "nombre": "Basal", "url": "menus/barcelona/csp_vilanova/ID002_basal" },
-      { "id": "ID002", "nombre": "Fácil Masticación", "url": "menus/barcelona/csp_vilanova/ID002_facil_masticacion" }
+      {
+        "id": "ID001",
+        "nombre": "ID001 Basal",
+        "url": "menus/barcelona/csp_vilanova/ID001_basal"
+      },
+      {
+        "id": "ID001",
+        "nombre": "ID001 Diabética",
+        "url": "menus/barcelona/csp_vilanova/ID001_diabetica"
+      },
+      {
+        "id": "ID001",
+        "nombre": "ID001 Fácil Masticación",
+        "url": "menus/barcelona/csp_vilanova/ID001_facil_masticacion"
+      },
+      {
+        "id": "ID002",
+        "nombre": "ID002 Basal",
+        "url": "menus/barcelona/csp_vilanova/ID002_basal"
+      },
+      {
+        "id": "ID002",
+        "nombre": "ID002 Fácil Masticación",
+        "url": "menus/barcelona/csp_vilanova/ID002_facil_masticacion"
+      }
     ]
   },
   {
     "nombre": "Residencia Mataró",
     "provincia": "Barcelona",
     "codigo": "5678",
-    "ciclo": { "semanas": 5, "inicio": "2025-09-01" },
+    "ciclo": {
+      "semanas": 5,
+      "inicio": "2025-09-01"
+    },
     "menus": [
-      { "id": "ID003", "nombre": "Basal", "url": "menus/barcelona/residencia_mataro/ID003_basal" },
-      { "id": "ID003", "nombre": "Diabética", "url": "menus/barcelona/residencia_mataro/ID003_diabetica" },
-      { "id": "ID003", "nombre": "Fácil Masticación", "url": "menus/barcelona/residencia_mataro/ID003_facil_masticacion" }
+      {
+        "id": "ID003",
+        "nombre": "ID003 Basal",
+        "url": "menus/barcelona/residencia_mataro/ID003_basal"
+      },
+      {
+        "id": "ID003",
+        "nombre": "ID003 Diabética",
+        "url": "menus/barcelona/residencia_mataro/ID003_diabetica"
+      },
+      {
+        "id": "ID003",
+        "nombre": "ID003 Fácil Masticación",
+        "url": "menus/barcelona/residencia_mataro/ID003_facil_masticacion"
+      }
     ]
   }
 ]
+
