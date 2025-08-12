@@ -3,23 +3,50 @@
     "nombre": "CSP Vilanova",
     "provincia": "Barcelona",
     "codigo": "1234",
-    "ciclo": { "semanas": 5, "inicio": "2025-09-01" },
+    "ciclo": {
+      "semanas": 5,
+      "inicio": "2025-09-01"
+    },
     "menus": [
-      { "id": "ID001", "nombre": "Basal" },
-      { "id": "ID001", "nombre": "Diabética" },
-      { "id": "ID001", "nombre": "Fácil Masticación" },
-      { "id": "ID002", "nombre": "Basal" },
-      { "id": "ID002", "nombre": "Fácil Masticación" }
+      {
+        "id": "ID001",
+        "nombre": "ID001 Basal"
+      },
+      {
+        "id": "ID001",
+        "nombre": "ID001 Diabética"
+      },
+      {
+        "id": "ID001",
+        "nombre": "ID001 Fácil Masticación"
+      },
+      {
+        "id": "ID002",
+        "nombre": "ID002 Basal"
+      },
+      {
+        "id": "ID002",
+        "nombre": "ID002 Fácil Masticación"
+      }
     ]
   },
   {
     "nombre": "Residencia Mataró",
     "provincia": "Barcelona",
     "codigo": "5678",
-    "ciclo": { "semanas": 5, "inicio": "2025-09-01" },
+    "ciclo": {
+      "semanas": 5,
+      "inicio": "2025-09-01"
+    },
     "menus": [
-      { "id": "ID001", "nombre": "Basal" },
-      { "id": "ID001", "nombre": "Diabética" }
+      {
+        "id": "ID003",
+        "nombre": "ID003 Basal"
+      },
+      {
+        "id": "ID003",
+        "nombre": "ID003 Diabética"
+      }
     ]
   }
 ]
