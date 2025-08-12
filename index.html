@@ -5,17 +5,15 @@
   <title>Menús Residencias</title>
   <style>
     body { font-family: sans-serif; padding: 2em; }
-    .filtros {
-      display: flex;
-      gap: 16px;
-      align-items: center;
-      margin-bottom: 1em;
-    }
+    .filtros { display: flex; gap: 16px; align-items: center; margin-bottom: 1em; }
     #btnNuevoCentro { margin-left: 48px; }
     input, select { padding: 0.5em; }
     ul { padding: 0; list-style: none; }
     li { margin: 0.5em 0; }
     .menu-item a { text-decoration: none; color: blue; }
+    .calendario { margin-top: 1em; }
+    .semana { display: inline-block; padding: 0.5em; border: 1px solid #ccc; margin: 0.2em; cursor: pointer; }
+    .semana:hover { background: #eef; }
   </style>
 </head>
 <body>
@@ -52,41 +50,15 @@
   <img src="Logo.png" alt="Logo Aramark" style="position: absolute; top: 30px; right: 30px; height: 120px;">
 
   <script>
-    // PIN por centro
-    const codigosCentros = {
-      "CSP Vilanova": "1234",
-      "Residencia Mataró": "1234",
-      "Residència Verge de Montserrat": "1235",
-      "Madre Jesus Pinto": "1235",
-      "Valldemia": "1234"
-    };
-
-    function validarMenusUnicosPorCentro(data) {
-      let errores = [];
-      data.forEach(centro => {
-        let nombres = centro.menus.map(m => m.nombre.toLowerCase());
-        let duplicados = nombres.filter((item, idx) => nombres.indexOf(item) !== idx);
-        if (duplicados.length > 0) {
-          errores.push(`Duplicados en centro "${centro.nombre}": ${[...new Set(duplicados)].join(', ')}`);
-        }
-      });
-      if (errores.length > 0) {
-        alert('Errores en el JSON:\n' + errores.join('\n'));
-        throw new Error('Duplicados detectados');
-      }
-    }
-
     let data = [];
     let ultimoCentroSeleccionado = null;
 
     fetch('centros.json')
-      .then(response => response.json())
+      .then(r => r.json())
       .then(json => {
         validarMenusUnicosPorCentro(json);
         data = json;
         cargarProvincias();
-        // NO mostrar ningún resultado de inicio
-        //filtrar();
       });
 
     const buscador = document.getElementById('buscador');
@@ -96,34 +68,26 @@
     buscador.addEventListener('input', filtrar);
     provincia.addEventListener('change', filtrar);
 
-    document.getElementById('btnNuevoCentro').addEventListener('click', () => {
+    document.getElementById('btnNuevoCentro').onclick = () => {
       document.getElementById('formularioCentro').style.display = 'block';
-    });
+    };
 
-    document.getElementById('guardarCentro').addEventListener('click', () => {
+    document.getElementById('guardarCentro').onclick = () => {
       const nombreCentro = document.getElementById('nuevocentro').value.trim();
       const provinciaCentro = document.getElementById('nuevaProvincia').value;
-      if (!nombreCentro || !provinciaCentro) {
-        alert('Debes rellenar ambos campos.');
-        return;
-      }
-      const yaExiste = data.some(d => d.nombre.toLowerCase() === nombreCentro.toLowerCase());
-      if (yaExiste) {
-        alert('Este centro ya existe.');
-        return;
-      }
+      if (!nombreCentro || !provinciaCentro) return alert('Debes rellenar ambos campos.');
+      if (data.some(d => d.nombre.toLowerCase() === nombreCentro.toLowerCase())) return alert('Este centro ya existe.');
       data.push({ nombre: nombreCentro, provincia: provinciaCentro, menus: [] });
       cargarProvincias();
       filtrar();
       document.getElementById('formularioCentro').style.display = 'none';
       document.getElementById('nuevocentro').value = '';
       document.getElementById('nuevaProvincia').value = '';
-    });
+    };
 
     function cargarProvincias() {
       while (provincia.options.length > 1) provincia.remove(1);
-      const provincias = [...new Set(data.map(d => d.provincia))];
-      provincias.forEach(p => {
+      [...new Set(data.map(d => d.provincia))].forEach(p => {
         const opt = document.createElement('option');
         opt.value = p;
         opt.textContent = p;
@@ -137,23 +101,16 @@
       resultados.innerHTML = '';
       document.getElementById('menusCentro').innerHTML = '';
       document.getElementById('formCodigo').style.display = 'none';
-
-      // Mostrar resultados solo si hay algo escrito o provincia seleccionada
       if (!texto && !filtroProvincia) return;
-
-      let resultadosFiltrados = data
-        .filter(d =>
-          d.nombre.toLowerCase().includes(texto) ||
-          d.provincia.toLowerCase().includes(texto)
-        )
-        .filter(d => !filtroProvincia || d.provincia === filtroProvincia);
-
-      resultadosFiltrados.forEach(d => {
+      data.filter(d =>
+        d.nombre.toLowerCase().includes(texto) &&
+        (!filtroProvincia || d.provincia === filtroProvincia)
+      ).forEach(d => {
         const li = document.createElement('li');
-        const boton = document.createElement('button');
-        boton.textContent = `${d.nombre} (${d.provincia})`;
-        boton.onclick = () => pedirCodigo(d);
-        li.appendChild(boton);
+        const btn = document.createElement('button');
+        btn.textContent = `${d.nombre} (${d.provincia})`;
+        btn.onclick = () => pedirCodigo(d);
+        li.appendChild(btn);
         resultados.appendChild(li);
       });
     }
@@ -167,32 +124,60 @@
       document.getElementById('codigoCentro').focus();
     }
 
-    document.getElementById('validarCodigo').onclick = function() {
+    document.getElementById('validarCodigo').onclick = () => {
       if (!ultimoCentroSeleccionado) return;
       const pinIngresado = document.getElementById('codigoCentro').value.trim();
-      const pinCorrecto = codigosCentros[ultimoCentroSeleccionado.nombre] || "";
+      const pinCorrecto = (ultimoCentroSeleccionado.codigo || "").trim();
       if (pinIngresado === pinCorrecto) {
         document.getElementById('formCodigo').style.display = 'none';
-        mostrarMenus(ultimoCentroSeleccionado);
+        mostrarCalendario(ultimoCentroSeleccionado);
       } else {
         document.getElementById('errorCodigo').style.display = 'inline';
       }
     };
 
-    function mostrarMenus(centro) {
-      const contenedor = document.getElementById('menusCentro');
-      contenedor.innerHTML = `<h2>Menús disponibles para ${centro.nombre}</h2>`;
-      const ul = document.createElement('ul');
-      centro.menus.forEach(m => {
-        const li = document.createElement('li');
-        li.className = 'menu-item';
-        li.innerHTML = `<a href="${m.url}" target="_blank">${m.nombre}</a>`;
-        ul.appendChild(li);
+    function validarMenusUnicosPorCentro(data) {
+      let errores = [];
+      data.forEach(c => {
+        let nombres = c.menus.map(m => m.nombre.toLowerCase());
+        let duplicados = nombres.filter((v, i) => nombres.indexOf(v) !== i);
+        if (duplicados.length) errores.push(`Duplicados en "${c.nombre}": ${[...new Set(duplicados)].join(', ')}`);
       });
-      contenedor.appendChild(ul);
-      history.pushState({ centro }, '', `#${centro.nombre.replace(/\s+/g, '-')}`);
+      if (errores.length) {
+        alert('Errores en JSON:\n' + errores.join('\n'));
+        throw new Error('Duplicados detectados');
+      }
+    }
+
+    function mostrarCalendario(centro) {
+      const contenedor = document.getElementById('menusCentro');
+      contenedor.innerHTML = `<h2>${centro.nombre}</h2>`;
+      const semanas = 5; // fijo o parametrizable
+      const inicio = new Date(2025, 8, 1); // 1 sept 2025
+      const divCal = document.createElement('div');
+      divCal.className = 'calendario';
+      for (let i = 0; i < semanas; i++) {
+        let ini = new Date(inicio); ini.setDate(ini.getDate() + i * 7);
+        let fin = new Date(ini); fin.setDate(fin.getDate() + 6);
+        const semanaBtn = document.createElement('div');
+        semanaBtn.className = 'semana';
+        semanaBtn.textContent = `Semana ${i + 1} (${ini.toLocaleDateString()} - ${fin.toLocaleDateString()})`;
+        semanaBtn.onclick = () => mostrarMenusSemana(centro, i + 1);
+        divCal.appendChild(semanaBtn);
+      }
+      contenedor.appendChild(divCal);
+    }
+
+    function mostrarMenusSemana(centro, semana) {
+      const ul = document.createElement('ul');
+      ul.innerHTML = centro.menus.map(m => {
+        const urlSem = m.url.replace('.pdf', `_sem${semana}.pdf`);
+        return `<li class="menu-item"><a href="${urlSem}" target="_blank">${m.nombre} - Semana ${semana}</a></li>`;
+      }).join('');
+      document.getElementById('menusCentro').appendChild(ul);
     }
   </script>
 </body>
 </html>
+
 
