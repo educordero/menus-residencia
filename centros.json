@@ -3,56 +3,26 @@
     "nombre": "CSP Vilanova",
     "provincia": "Barcelona",
     "codigo": "1234",
-    "ciclo": {
-      "semanas": 5,
-      "inicio": "2025-09-01"
-    },
+    "ciclo": { "semanas": 5, "inicio": "2025-09-01" },
     "menus": [
-      {
-        "nombre": "Basal",
-        "url": "menus/barcelona/csp_vilanova/ID001_basal.pdf"
-      },
-      {
-        "nombre": "Diabética",
-        "url": "menus/barcelona/csp_vilanova/ID001_diabetica.pdf"
-      },
-      {
-        "nombre": "Fácil Masticación",
-        "url": "menus/barcelona/csp_vilanova/ID001_facil_masticacion.pdf"
-      },
-      {
-        "nombre": "Basal",
-        "url": "menus/barcelona/csp_vilanova/ID002_basal.pdf"
-      },
-      {
-        "nombre": "Fácil Masticación",
-        "url": "menus/barcelona/csp_vilanova/ID002_facil_masticacion.pdf"
-      }
+      { "id": "ID001", "nombre": "Basal 1" },
+      { "id": "ID001", "nombre": "Diabética" },
+      { "id": "ID001", "nombre": "Fácil Masticación 1" },
+      { "id": "ID002", "nombre": "Basal 2" },
+      { "id": "ID002", "nombre": "Fácil Masticación 2" }
     ]
   },
   {
     "nombre": "Residencia Mataró",
     "provincia": "Barcelona",
     "codigo": "5678",
-    "ciclo": {
-      "semanas": 5,
-      "inicio": "2025-09-01"
-    },
+    "ciclo": { "semanas": 5, "inicio": "2025-09-01" },
     "menus": [
-      {
-        "nombre": "Basal",
-        "url": "menus/barcelona/residencia_mataro/ID003_basal.pdf"
-      },
-      {
-        "nombre": "Diabética",
-        "url": "menus/barcelona/residencia_mataro/ID003_diabetica.pdf"
-      },
-      {
-        "nombre": "Fácil Masticación",
-        "url": "menus/barcelona/residencia_mataro/ID003_facil_masticacion.pdf"
-      }
+      { "id": "ID003", "nombre": "Basal" },
+      { "id": "ID003", "nombre": "Diabética" },
+      { "id": "ID003", "nombre": "Fácil Masticación" }
     ]
   }
 ]
-
+  
 
